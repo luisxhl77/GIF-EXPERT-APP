@@ -16,6 +16,7 @@ export const GifGrid = ({category}) => {
           images?.map( item => (
             <CardImage 
               key={item.id}
+              id={item.id}
               title={item.title}
               image={item.url}
             />
