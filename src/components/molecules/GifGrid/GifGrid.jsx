@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFetchGifs } from '../../../hooks';
+import { CardImage } from '../cardImage/CardImage';
 
 
 export const GifGrid = ({category}) => {
@@ -13,10 +14,11 @@ export const GifGrid = ({category}) => {
       <div className='card-grid' >
         {
           images?.map( item => (
-            <div key={item.id}>
-              <h2>{item.title}</h2>
-              <img src={item.url} alt="" />
-            </div>
+            <CardImage 
+              key={item.id}
+              title={item.title}
+              image={item.url}
+            />
           ))
         }
       </div>
