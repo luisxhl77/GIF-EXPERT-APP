@@ -1,22 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import { GifGrid } from './components/molecules';
+import { InputText } from './components/atoms';
+
 
 function App() {
+  const [category, setCategories] = useState(['One Punch']);
+  
+  const onAddCategory = ( newCategory ) => {
+    if( !category.includes(newCategory) ){
+      setCategories([ newCategory, ...category ])
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <h1>GIF EXPERT APP</h1>
+
+        <InputText 
+          type='text'
+          placeholder='Buscar gifs'
+          onNewCategory= { onAddCategory }
+        />
+
+        {
+          category?.map((item,idx) => (
+            <GifGrid key={idx} category={item}/>
+          ))
+        }
+      
       </header>
     </div>
   );
